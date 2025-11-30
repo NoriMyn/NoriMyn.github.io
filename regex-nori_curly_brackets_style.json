@@ -1,0 +1,19 @@
+{
+    "id": "f160e24a-8ad7-4713-ae11-37534e1ff40b",
+    "scriptName": "Nori Curly Brackets Style",
+    "findRegex": "/\\{(.*)\\}/g",
+    "replaceString": "<span style=\"font-style: italic; opacity: 0.85; color: #a7a9a9;\">$1</span>",
+    "trimStrings": [],
+    "placement": [
+        1,
+        2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null,
+    "description": "Styles {thoughts} with italics and subtle opacity for visual distinction"
+}
