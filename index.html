@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Продвинутые пресеты для Claude и GPT - лучшие настройки для AI-ассистентов">
+    <title>NoriMyn — Advanced Presets</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+
+    <style>
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #1a1a1a;
+            --bg-card: #252525;
+            --text-primary: #e0e0e0;
+            --text-secondary: #a0a0a0;
+            --accent-primary: #00d4ff;
+            --accent-hover: #00a8cc;
+            --border-color: #333;
+            --shadow: rgba(0, 212, 255, 0.2);
+        }
+
+        [data-theme="light"] {
+            --bg-primary: #f5f5f5;
+            --bg-secondary: #ffffff;
+            --bg-card: #fafafa;
+            --text-primary: #1a1a1a;
+            --text-secondary: #666666;
+            --accent-primary: #0088cc;
+            --accent-hover: #006699;
+            --border-color: #ddd;
+            --shadow: rgba(0, 136, 204, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            transition: all 0.3s ease;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            animation: fadeIn 0.6s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, var(--accent-primary), #00ffaa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: slideDown 0.8s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--bg-card);
+            border: 2px solid var(--border-color);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 4px 15px var(--shadow);
+        }
+
+        .theme-toggle:hover {
+            transform: rotate(180deg) scale(1.1);
+            box-shadow: 0 6px 20px var(--shadow);
+        }
+
+        .section {
+            background: var(--bg-card);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.5s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px var(--shadow);
+        }
+
+        h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: var(--accent-primary);
+            border-bottom: 2px solid var(--accent-primary);
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            font-size: 1.5em;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            color: var(--text-primary);
+        }
+
+        p {
+            margin-bottom: 20px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .preset-item, .regex-item {
+            background: var(--bg-secondary);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            border-left: 4px solid var(--accent-primary);
+            transition: all 0.3s ease;
+        }
+
+        .preset-item:hover, .regex-item:hover {
+            border-left-width: 6px;
+            padding-left: 24px;
+            background: var(--bg-primary);
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent-primary), #00a8cc);
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            box-shadow: 0 4px 15px var(--shadow);
+            margin: 10px 10px 10px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: left 0.4s ease;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px var(--shadow);
+            border-color: var(--accent-hover);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .btn-secondary {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            border: 2px solid var(--accent-primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent-primary);
+            color: white;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .contact-item {
+            background: var(--bg-secondary);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid var(--border-color);
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-primary);
+            box-shadow: 0 8px 20px var(--shadow);
+        }
+
+        .contact-item a {
+            color: var(--accent-primary);
+            text-decoration: none;
+            font-weight: 600;
+            word-break: break-all;
+        }
+
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+
+        .archive-notice {
+            background: rgba(255, 200, 0, 0.1);
+            border-left: 4px solid #ffc800;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 60px;
+            border-top: 2px solid var(--border-color);
+            color: var(--text-secondary);
+        }
+
+        footer a {
+            color: var(--accent-primary);
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: var(--accent-hover);
+            text-decoration: underline;
+        }
+
+        .copyright {
+            margin-top: 20px;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            .section {
+                padding: 20px;
+            }
+
+            .btn {
+                display: block;
+                text-align: center;
+                margin: 10px 0;
+            }
+
+            .theme-toggle {
+                width: 45px;
+                height: 45px;
+                top: 15px;
+                right: 15px;
+            }
+        }
+
+        /* Анимация для кнопок при загрузке */
+        .btn {
+            animation: btnPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes btnPulse {
+            0%, 100% {
+                box-shadow: 0 4px 15px var(--shadow);
+            }
+            50% {
+                box-shadow: 0 4px 25px var(--shadow);
+            }
+        }
+
+        .btn:hover {
+            animation: none;
+        }
+    </style>
+</head>
+<body data-theme="dark">
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Переключить тему">🌙</button>
+
+    <div class="container">
+        <header>
+            <h1>NoriMyn — Advanced Presets</h1>
+            <p class="subtitle">Лучшие пресеты для твоего комфорта</p>
+        </header>
+
+        <main>
+            <section class="section">
+                <h2>🚀 Основные Пресеты</h2>
+
+                <div class="preset-item">
+                    <h3>Claude Advanced</h3>
+                    <p>Полная версия для Claude с режимом мыслительного процесса, 8+ жанровыми переключателями и расширенным литературным контролем.</p>
+                    <a href="https://files.catbox.moe/5c8d3t.json" target="_blank" class="btn">СКАЧАТЬ</a>
+                </div>
+
+                <div class="preset-item">
+                    <h3>Universal Pro</h3>
+                    <p>Последняя версия с улучшенным форматированием, GOD MODE и продвинутыми системами предотвращения циклов для обеих платформ.</p>
+                    <a href="https://files.catbox.moe/7q9hb0.json" target="_blank" class="btn">СКАЧАТЬ</a>
+                </div>
+
+                <div class="preset-item">
+                    <h3>GPT Ultimate</h3>
+                    <p>Мощная версия для GPT с трёхуровневыми протоколами антицензуры, расширенной библиотекой жанров и NSFW постоянным режимом.</p>
+                    <a href="https://files.catbox.moe/q9zjcg.json" target="_blank" class="btn">СКАЧАТЬ</a>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>⚙️ Регулярные Выражения</h2>
+                <p>Набор регулярных выражений для SillyTavern/ST-fork. Улучшает визуальное представление, управляет токенами контекста и автоматизирует обработку вывода AI.</p>
+
+                <div class="regex-item">
+                    <h3>Delimiter Remover</h3>
+                    <p>Удаляет строки разделителей (три и более дефиса подряд).</p>
+                    <a href="https://files.catbox.moe/00xuvv.json" target="_blank" class="btn btn-secondary">СКАЧАТЬ</a>
+                </div>
+
+                <div class="regex-item">
+                    <h3>Bypass Filter</h3>
+                    <p>Регулярное выражение для обхода фильтров и ограничений.</p>
+                    <a href="https://files.catbox.moe/7prrk5.json" target="_blank" class="btn btn-secondary">СКАЧАТЬ</a>
+                </div>
+
+                <div class="regex-item">
+                    <h3>Brace Formatter</h3>
+                    <p>Оформление текста в фигурные скобки для стилизации.</p>
+                    <a href="https://files.catbox.moe/5qezrm.json" target="_blank" class="btn btn-secondary">СКАЧАТЬ</a>
+                </div>
+
+                <div class="regex-item">
+                    <h3>Transition Effects</h3>
+                    <p>HTML переходы для плавной смены содержимого.</p>
+                    <a href="https://files.catbox.moe/m5wiwg.json" target="_blank" class="btn btn-secondary">СКАЧАТЬ</a>
+                </div>
+
+                <div class="regex-item">
+                    <h3>Info Block Cleaner</h3>
+                    <p>Очистка информационных блоков от лишнего форматирования.</p>
+                    <a href="https://files.catbox.moe/u76g9e.json" target="_blank" class="btn btn-secondary">СКАЧАТЬ</a>
+                </div>
+
+                <div class="regex-item">
+                    <h3>Thought Process Handler</h3>
+                    <p>Удаление или оформление блоков мыслительного процесса.</p>
+                    <a href="https://files.catbox.moe/lmtrbg.json" target="_blank" class="btn btn-secondary">СКАЧАТЬ</a>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>📦 Архив Версий</h2>
+                <div class="archive-notice">
+                    <strong>⚠️ Внимание:</strong> Старые версии пресетов сохранены для совместимости и справки. Рекомендуется использовать актуальные версии.
+                </div>
+
+                <div class="preset-item">
+                    <h3>Claude v1.0 (Архив)</h3>
+                    <p>Первая версия пресета для Claude. Сохранена для совместимости с более старыми конфигурациями.</p>
+                    <a href="https://files.catbox.moe/kf3pj5.json" target="_blank" class="btn btn-secondary">СКАЧАТЬ V1</a>
+                </div>
+
+                <div class="preset-item">
+                    <h3>Дополнительные Пресеты (Архив)</h3>
+                    <p>Ранняя версия для архива. Не рекомендуется для новых пользователей, но может быть полезна для справки.</p>
+                    <a href="https://rentry.co/NoriMyn" target="_blank" class="btn btn-secondary">ВАРИАНТ 1</a>
+                    <a href="https://rentry.co/NoriMyn2" target="_blank" class="btn btn-secondary">ВАРИАНТ 2</a>
+                    <a href="https://rentry.co/NoriMyn3" target="_blank" class="btn btn-secondary">ВАРИАНТ 3</a>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>📞 Контакты</h2>
+                <div class="contact-grid">
+                    <div class="contact-item">
+                        <p><strong>Telegram</strong></p>
+                        <a href="https://t.me/NoriMyn" target="_blank">@NoriMyn</a>
+                    </div>
+                    <div class="contact-item">
+                        <p><strong>Rentry</strong></p>
+                        <a href="https://rentry.co/NoriMyn" target="_blank">rentry.co/NoriMyn</a>
+                    </div>
+                    <div class="contact-item">
+                        <p><strong>Email</strong></p>
+                        <a href="mailto:mappaGG@proton.me">mappaGG@proton.me</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div>
+                <a href="https://t.me/NoriMyn" target="_blank">Telegram</a>
+                <a href="https://github.com/norimyn" target="_blank">GitHub</a>
+                <a href="mailto:mappaGG@proton.me">Связаться</a>
+            </div>
+            <p class="copyright">© 2025 NoriMyn. Продвинутые AI-пресеты для вашего комфорта.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Переключение темы
+        function toggleTheme() {
+            const body = document.body;
+            const themeToggle = document.querySelector('.theme-toggle');
+            const currentTheme = body.getAttribute('data-theme');
+
+            if (currentTheme === 'dark') {
+                body.setAttribute('data-theme', 'light');
+                themeToggle.textContent = '☀️';
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                themeToggle.textContent = '🌙';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Загрузка сохранённой темы
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            const themeToggle = document.querySelector('.theme-toggle');
+
+            document.body.setAttribute('data-theme', savedTheme);
+            themeToggle.textContent = savedTheme === 'dark' ? '🌙' : '☀️';
+        });
+
+        // Плавная прокрутка для якорей
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
