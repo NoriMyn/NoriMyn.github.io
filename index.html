@@ -26,7 +26,6 @@
             flex-direction: column;
         }
 
-        /* HERO SECTION */
         .hero {
             position: relative;
             width: 100%;
@@ -84,7 +83,6 @@
             margin-top: 50px;
         }
 
-        /* BUTTONS */
         .btn {
             padding: 14px 35px;
             border: 1px solid #ffffff;
@@ -117,7 +115,6 @@
             color: #ffffff;
         }
 
-        /* CONTAINER */
         .container {
             max-width: 1100px;
             margin: 0 auto;
@@ -125,7 +122,6 @@
             width: 100%;
         }
 
-        /* SECTIONS */
         .section {
             padding: 120px 0;
             border-top: 1px solid #1a1a1a;
@@ -139,7 +135,6 @@
             text-transform: uppercase;
         }
 
-        /* PRESETS LIST */
         .presets-list {
             display: flex;
             flex-direction: column;
@@ -240,7 +235,6 @@
             display: inline-block;
         }
 
-        /* FEATURES LIST */
         .features-list {
             list-style: none;
             margin: 40px 0;
@@ -270,7 +264,6 @@
             margin-top: 8px;
         }
 
-        /* CONTACT SECTION */
         .contact-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -311,5 +304,305 @@
             color: #888888;
         }
 
-        /* FOOTER */
-        footer
+        footer {
+            padding: 60px 0;
+            text-align: center;
+            border-top: 1px solid #1a1a1a;
+            color: #666666;
+            font-size: 0.85em;
+            letter-spacing: 1px;
+        }
+
+        footer p {
+            margin: 8px 0;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+
+            .hero h1 {
+                font-size: 2em;
+            }
+
+            .hero-subtitle {
+                font-size: 0.9em;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .section {
+                padding: 80px 0;
+            }
+
+            .section h2 {
+                font-size: 1.8em;
+            }
+
+            .btn-small {
+                width: 100%;
+            }
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="hero-content">
+            <h1>NoriMyn</h1>
+            <p class="hero-subtitle">Лучшие пресеты для твоего комфорта</p>
+            <div class="hero-buttons">
+                <a href="https://t.me/MoriNori_hi" target="_blank" class="btn btn-primary">Telegram</a>
+                <a href="https://rentry.org/NoriMyn" target="_blank" class="btn">Rentry</a>
+                <button class="btn" onclick="copyToClipboard('mappaGG@proton.me')">Email</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="section">
+            <h2>Пресеты</h2>
+            <div class="presets-list">
+                <div class="preset-item">
+                    <div class="preset-header">
+                        <h3>NoriMyn Claude V3.0</h3>
+                        <span class="preset-tag">Claude</span>
+                    </div>
+                    <p class="preset-text">Последняя версия для Claude с режимом мыслительного процесса, 8+ жанровыми переключателями и расширенным литературным контролем.</p>
+                    <div class="preset-details">
+                        <span class="detail">Режим мыслительного процесса</span>
+                        <span class="detail">8+ жанров</span>
+                        <span class="detail">Русский язык</span>
+                    </div>
+                    <a href="NoriMyn_ClaudeV3.0.json" download class="btn btn-small">Скачать</a>
+                    <a href="gude.pdf" target="_blank" class="btn btn-small">Гайд</a>
+                </div>
+
+                <div class="preset-item">
+                    <div class="preset-header">
+                        <h3>NoriMyn V2.5</h3>
+                        <span class="preset-tag">Claude &amp; Gemini</span>
+                    </div>
+                    <p class="preset-text">Универсальная версия с улучшенным форматированием, GOD MODE и продвинутыми системами предотвращения циклов.</p>
+                    <div class="preset-details">
+                        <span class="detail">GOD MODE</span>
+                        <span class="detail">Антицикл система</span>
+                        <span class="detail">Множественные POV</span>
+                    </div>
+                    <a href="Nori_V2.5_[GemClau].json" download class="btn btn-small">Скачать</a>
+                </div>
+
+                <div class="preset-item">
+                    <div class="preset-header">
+                        <h3>NoriMyn GPT</h3>
+                        <span class="preset-tag">GPT-4o &amp; GPT-5.1</span>
+                    </div>
+                    <p class="preset-text">Мощная версия для GPT с трёхуровневыми протоколами антицензуры и расширенной библиотекой жанров.</p>
+                    <div class="preset-details">
+                        <span class="detail">Антицензура 3 уровня</span>
+                        <span class="detail">8+ жанров</span>
+                        <span class="detail">NSFW режим</span>
+                    </div>
+                    <a href="NoriMyn_gpt.json" download class="btn btn-small">Скачать</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Возможности</h2>
+            <ul class="features-list">
+                <li><strong>Модули</strong>Каждый промт работает независимо. Миксуйте жанры, стили, тона и количество символов по желанию.</li>
+                <li><strong>Персонажи под контролем</strong>Ваш бот никогда не пишет за вас. Мама Нори защитит вас от этого.</li>
+                <li><strong>Жанровые Режимы</strong>Романтика, Тёмная Романтика, Ангст, Комедия, Фэнтези, Экшн, Хоррор, Флафф.</li>
+                <li><strong>Гибкая длина ответов</strong>От компактных 100 слов до эпических 1200 и выше.</li>
+                <li><strong>Разнообразное лицо повествования</strong>Фокус на вашем user, фокус на char или всеведущая позиция.</li>
+                <li><strong>NSFW и русский язык</strong>Полный контроль над явным контентом и полная локализация.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Regex Система</h2>
+            <p style="color: #aaaaaa; margin-bottom: 40px; font-size: 0.95em; line-height: 1.6;">
+                Набор регулярных выражений для SillyTavern. Улучшает визуальное представление и автоматизирует обработку вывода AI.
+            </p>
+            <div class="presets-list">
+                <div class="preset-item">
+                    <div class="preset-header">
+                        <h3>Nori Regex (---)</h3>
+                        <span class="preset-tag">SillyTavern</span>
+                    </div>
+                    <p class="preset-text">Удаляет строки разделителей (три и более дефиса подряд).</p>
+                    <div class="preset-details"><span class="detail">Удаление разделителей</span></div>
+                    <a href="regex-nori--.json" download class="btn btn-small">Загрузить</a>
+                </div>
+
+                <div class="preset-item">
+                    <div class="preset-header">
+                        <h3>Nori Regex (Bypass Filter)</h3>
+                        <span class="preset-tag">SillyTavern</span>
+                    </div>
+                    <p class="preset-text">Регулярное выражение для обхода фильтров и ограничений.</p>
+                    <div class="preset-details"><span class="detail">Bypass Filter</span></div>
+                    <a href="regex-nori_bypass_filter.json" download class="btn btn-small">Загрузить</a>
+                </div>
+
+                <div class="preset-item">
+                    <div class="preset-header">
+                        <h3>Nori Regex (Curly Brackets)</h3>
+                        <span class="preset-tag">SillyTavern</span>
+                    </div>
+                    <p class="preset-text">Оформление текста в фигурные скобки для стилизации.</p>
+                    <div class="preset-details"><span class="detail">Curly Brackets</span></div>
+                    <a href="regex-nori_curly_brackets_style.json" download class="btn btn-small">Загрузить</a>
+                </div>
+
+                <div class="preset-item">
+                    <div class="preset-header">
+                        <h3>Nori Regex (HTML Transitions)</h3>
+                        <span class="preset-tag">SillyTavern</span>
+                    </div>
+                    <p class="preset-text">HTML переходы для плавной смены содержимого.</p>
+                    <div class="preset-details"><span class="detail">HTML Transitions</span></div>
+                    <a href="regex-nori_html_transitions.json" download class="btn btn-small">Загрузить</a>
+                </div>
+
+                <div class="preset-item">
+                    <div class="preset-header">
+                        <h3>Nori Regex (Infoblock Cleanup)</h3>
+                        <span class="preset-tag">SillyTavern</span>
+                    </div>
+                    <p class="preset-text">Очистка информационных блоков от лишнего форматирования.</p>
+                    <div class="preset-details"><span class="detail">Infoblock Cleanup</span></div>
+                    <a href="regex-nori_infoblock_cleanup.json" download class="btn btn-small">Загрузить</a>
+                </div>
+
+                <div class="preset-item">
+                    <div class="preset-header">
+                        <h3>Nori Regex (Thinking Cleanup)</h3>
+                        <span class="preset-tag">SillyTavern</span>
+                    </div>
+                    <p class="preset-text">Удаление или оформление блоков мыслительного процесса.</p>
+                    <div class="preset-details"><span class="detail">Thinking Cleanup</span></div>
+                    <a href="regex-nori_thinking_cleanup_(optional).json" download class="btn btn-small">Загрузить</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Архивные Версии</h2>
+            <p style="color: #aaaaaa; margin-bottom: 40px; font-size: 0.95em; line-height: 1.6;">
+                Старые версии пресетов сохранены для совместимости. Рекомендуется использовать актуальные версии.
+            </p>
+            <div class="presets-list">
+                <div class="preset-item">
+                    <div class="preset-header">
+                        <h3>NoriMyn Claude V2.0</h3>
+                        <span class="preset-tag">Архив</span>
+                    </div>
+                    <p class="preset-text">Вторая версия пресета для Claude. Сохранена для совместимости.</p>
+                    <div class="preset-details">
+                        <span class="detail">Claude</span>
+                        <span class="detail">8+ жанров</span>
+                    </div>
+                    <a href="NoriMyn_Claudev2.0.json" download class="btn btn-small">Скачать</a>
+                </div>
+
+                <div class="preset-item">
+                    <div class="preset-header">
+                        <h3>NoriMyn Claude miniFix</h3>
+                        <span class="preset-tag">Архив</span>
+                    </div>
+                    <p class="preset-text">Фикс-версия пресета для Claude с тумблерами.</p>
+                    <div class="preset-details">
+                        <span class="detail">Fix-версия</span>
+                        <span class="detail">Тумблеры</span>
+                    </div>
+                    <a href="NoriMyn_Claude_miniFix.json" download class="btn btn-small">Скачать</a>
+                </div>
+
+                <div class="preset-item">
+                    <div class="preset-header">
+                        <h3>NoriMyn Claude V1</h3>
+                        <span class="preset-tag">Архив</span>
+                    </div>
+                    <p class="preset-text">Первая версия пресета для Claude.</p>
+                    <div class="preset-details">
+                        <span class="detail">Claude</span>
+                        <span class="detail">Базовые жанры</span>
+                    </div>
+                    <a href="NoriMyn_Claude.json" download class="btn btn-small">Скачать</a>
+                </div>
+
+                <div class="preset-item">
+                    <div class="preset-header">
+                        <h3>Дополнительные Пресеты</h3>
+                        <span class="preset-tag">Extra</span>
+                    </div>
+                    <p class="preset-text">Экспериментальные варианты для продвинутых пользователей.</p>
+                    <div class="preset-details">
+                        <span class="detail">Экспериментальные</span>
+                        <span class="detail">Кастомизация</span>
+                    </div>
+                    <div style="display: flex; gap: 10px; margin-top: 15px; flex-wrap: wrap;">
+                        <a href="33sty0.json" download class="btn btn-small">Вариант 1</a>
+                        <a href="9clg3q.json" download class="btn btn-small">Вариант 2</a>
+                        <a href="1sl1ku.json" download class="btn btn-small">Вариант 3</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Контакты</h2>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <label>Telegram</label>
+                    <a href="https://t.me/MoriNori_hi" target="_blank">@MoriNori_hi</a>
+                </div>
+                <div class="contact-item">
+                    <label>Email</label>
+                    <button style="background: none; border: none; color: #ffffff; cursor: pointer; font-size: 0.95em; padding: 0; font-family: inherit;" onclick="copyToClipboard('mappaGG@proton.me')">mappaGG@proton.me</button>
+                </div>
+                <div class="contact-item">
+                    <label>Rentry</label>
+                    <a href="https://rentry.org/NoriMyn" target="_blank">rentry.org/NoriMyn</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>NoriMyn — Advanced Prompt System</p>
+        <p>Created by NoriMyn | December 2025</p>
+        <p style="margin-top: 20px; color: #555555;">Free to use, modify, and share</p>
+    </footer>
+
+    <script>
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Email скопирован в буфер обмена! ✨');
+            });
+        }
+
+        const cards = document.querySelectorAll('.preset-item');
+        cards.forEach(card => {
+            card.addEventListener('click', (e) => {
+                if (e.target.tagName !== 'A' && e.target.tagName !== 'BUTTON') {
+                    window.open('https://t.me/MoriNori_hi', '_blank');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
