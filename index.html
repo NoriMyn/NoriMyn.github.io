@@ -197,9 +197,21 @@
             transition: all 0.3s ease;
         }
 
-        .preset-item:hover .preset-tag {
+        .preset-tag.new {
+            background: #ffffff;
+            color: #000000;
+            border-color: #ffffff;
+            font-weight: 500;
+        }
+
+        .preset-item:hover .preset-tag:not(.new) {
             border-color: #ffffff;
             color: #ffffff;
+        }
+
+        .preset-item:hover .preset-tag.new {
+            background: #ffffff;
+            color: #000000;
         }
 
         .preset-text {
@@ -376,25 +388,27 @@
             <div class="presets-list">
                 <div class="preset-item">
                     <div class="preset-header">
-                        <h3>NoriMyn Claude V3.0</h3>
-                        <span class="preset-tag">Claude</span>
+                        <h3>NoriMyn Claude V4.0</h3>
+                        <span class="preset-tag new">NEW</span>
                     </div>
-                    <p class="preset-text">Последняя версия для Claude с режимом мыслительного процесса, 8+ жанровыми переключателями и расширенным литературным контролем.</p>
+                    <p class="preset-text">Мега-обновление с режимом Thinking (думалка), HTML-визуализацией для красивых чатов, интерактивными кнопками выбора действий и расширенным контекстом до 18000 токенов. Теперь с поддержкой английского языка и улучшенной системой префилов.</p>
                     <div class="preset-details">
-                        <span class="detail">Режим мыслительного процесса</span>
-                        <span class="detail">8+ жанров</span>
-                        <span class="detail">Русский язык</span>
+                        <span class="detail">🧠 Thinking Mode</span>
+                        <span class="detail">🎨 HTML Support</span>
+                        <span class="detail">🦭 Action Buttons</span>
+                        <span class="detail">18K Tokens</span>
+                        <span class="detail">ENG/RUS</span>
                     </div>
-                    <a href="NoriMyn_ClaudeV3.0.json" download class="btn btn-small">Скачать</a>
+                    <a href="NoriMyn_ClaudeV4.0.json" download class="btn btn-small">Скачать</a>
                     <a href="gude.pdf" target="_blank" class="btn btn-small">Гайд</a>
                 </div>
 
                 <div class="preset-item">
                     <div class="preset-header">
                         <h3>NoriMyn V2.5</h3>
-                        <span class="preset-tag">Claude &amp; Gemini</span>
+                        <span class="preset-tag">Claude & Gemini</span>
                     </div>
-                    <p class="preset-text">Универсальная версия с улучшенным форматированием, GOD MODE и продвинутыми системами предотвращения циклов.</p>
+                    <p class="preset-text">Универсальная версия с улучшенным форматированием, GOD MODE и продвинутыми системами предотвращения циклов для обеих платформ.</p>
                     <div class="preset-details">
                         <span class="detail">GOD MODE</span>
                         <span class="detail">Антицикл система</span>
@@ -406,9 +420,9 @@
                 <div class="preset-item">
                     <div class="preset-header">
                         <h3>NoriMyn GPT</h3>
-                        <span class="preset-tag">GPT-4o &amp; GPT-5.1</span>
+                        <span class="preset-tag">GPT-4o & GPT-5.1</span>
                     </div>
-                    <p class="preset-text">Мощная версия для GPT с трёхуровневыми протоколами антицензуры и расширенной библиотекой жанров.</p>
+                    <p class="preset-text">Мощная версия для GPT с трёхуровневыми протоколами антицензуры, расширенной библиотекой жанров и NSFW постоянным режимом.</p>
                     <div class="preset-details">
                         <span class="detail">Антицензура 3 уровня</span>
                         <span class="detail">8+ жанров</span>
@@ -428,13 +442,15 @@
                 <li><strong>Гибкая длина ответов</strong>От компактных 100 слов до эпических 1200 и выше.</li>
                 <li><strong>Разнообразное лицо повествования</strong>Фокус на вашем user, фокус на char или всеведущая позиция.</li>
                 <li><strong>NSFW и русский язык</strong>Полный контроль над явным контентом и полная локализация.</li>
+                <li><strong>Thinking Mode (V4.0)</strong>Режим мыслительного процесса для более глубоких и продуманных ответов.</li>
+                <li><strong>HTML & Интерактив (V4.0)</strong>Красивое оформление чатов с HTML и кнопки выбора действий для игрового опыта.</li>
             </ul>
         </div>
 
         <div class="section">
             <h2>Regex Система</h2>
             <p style="color: #aaaaaa; margin-bottom: 40px; font-size: 0.95em; line-height: 1.6;">
-                Набор регулярных выражений для SillyTavern. Улучшает визуальное представление и автоматизирует обработку вывода AI.
+                Набор регулярных выражений для SillyTavern/ST-fork. Улучшает визуальное представление, управляет токенами контекста и автоматизирует обработку вывода AI.
             </p>
             <div class="presets-list">
                 <div class="preset-item">
@@ -502,15 +518,29 @@
         <div class="section">
             <h2>Архивные Версии</h2>
             <p style="color: #aaaaaa; margin-bottom: 40px; font-size: 0.95em; line-height: 1.6;">
-                Старые версии пресетов сохранены для совместимости. Рекомендуется использовать актуальные версии.
+                Старые версии пресетов сохранены для совместимости и справки. Рекомендуется использовать актуальные версии.
             </p>
             <div class="presets-list">
+                <div class="preset-item">
+                    <div class="preset-header">
+                        <h3>NoriMyn Claude V3.0</h3>
+                        <span class="preset-tag">Архив</span>
+                    </div>
+                    <p class="preset-text">Полная версия для Claude с режимом мыслительного процесса, 8+ жанровыми переключателями и расширенным литературным контролем.</p>
+                    <div class="preset-details">
+                        <span class="detail">Claude</span>
+                        <span class="detail">8+ жанров</span>
+                        <span class="detail">Русский язык</span>
+                    </div>
+                    <a href="NoriMyn_ClaudeV3.0.json" download class="btn btn-small">Скачать</a>
+                </div>
+
                 <div class="preset-item">
                     <div class="preset-header">
                         <h3>NoriMyn Claude V2.0</h3>
                         <span class="preset-tag">Архив</span>
                     </div>
-                    <p class="preset-text">Вторая версия пресета для Claude. Сохранена для совместимости.</p>
+                    <p class="preset-text">Вторая версия пресета для Claude. Сохранена для совместимости с более старыми конфигурациями.</p>
                     <div class="preset-details">
                         <span class="detail">Claude</span>
                         <span class="detail">8+ жанров</span>
@@ -536,7 +566,7 @@
                         <h3>NoriMyn Claude V1</h3>
                         <span class="preset-tag">Архив</span>
                     </div>
-                    <p class="preset-text">Первая версия пресета для Claude.</p>
+                    <p class="preset-text">Ранняя версия для архива. Не рекомендуется для новых пользователей, но может быть полезна для справки.</p>
                     <div class="preset-details">
                         <span class="detail">Claude</span>
                         <span class="detail">Базовые жанры</span>
@@ -584,7 +614,7 @@
 
     <footer>
         <p>NoriMyn — Advanced Prompt System</p>
-        <p>Created by NoriMyn | December 2025</p>
+        <p>Created by NoriMyn | January 2026</p>
         <p style="margin-top: 20px; color: #555555;">Free to use, modify, and share</p>
     </footer>
 
