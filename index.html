@@ -316,6 +316,23 @@
             color: #888888;
         }
 
+        .warning-box {
+            background: #0a0a0a;
+            border: 1px solid #333333;
+            border-left: 3px solid #ffffff;
+            padding: 25px;
+            margin-bottom: 40px;
+            color: #aaaaaa;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+
+        .warning-box strong {
+            color: #ffffff;
+            display: block;
+            margin-bottom: 10px;
+        }
+
         footer {
             padding: 60px 0;
             text-align: center;
@@ -387,66 +404,108 @@
             <h2>Пресеты</h2>
             <div class="presets-list">
                 
-                <!-- NEW GPT V3.0 -->
                 <div class="preset-item">
                     <div class="preset-header">
-                        <h3>NoriMyn GPT v3.0</h3>
+                        <h3>NoriMyn Claude V4.1</h3>
                         <span class="preset-tag new">NEW</span>
                     </div>
-                    <p class="preset-text">Глобальный редизайн для GPT. Система живых NPC, строгий Ultra Anti-Echo, экспериментальные HTML-артефакты для мобильных, новые стили (Noir, Poetic) и точный контроль длины ответов.</p>
+                    <p class="preset-text">Обновлённая версия с поддержкой инфоблоков NoriVoid. Режим Thinking, HTML-визуализация, интерактивные кнопки и расширенный контекст до 18000 токенов.</p>
+                    <div class="preset-details">
+                        <span class="detail">🧠 Thinking Mode</span>
+                        <span class="detail">📊 Infoblocks</span>
+                        <span class="detail">🎨 HTML Support</span>
+                        <span class="detail">18K Tokens</span>
+                    </div>
+                    <a href="NoriMyn_ClaudeV4.1.json" download class="btn btn-small">Скачать</a>
+                </div>
+
+                <div class="preset-item">
+                    <div class="preset-header">
+                        <h3>NoriMyn V3.1 Gemini</h3>
+                        <span class="preset-tag new">NEW</span>
+                    </div>
+                    <p class="preset-text">Последняя версия с поддержкой инфоблоков, GOD MODE и продвинутыми системами предотвращения циклов для Gemini.</p>
+                    <div class="preset-details">
+                        <span class="detail">Gemini</span>
+                        <span class="detail">📊 Infoblocks</span>
+                        <span class="detail">GOD MODE</span>
+                        <span class="detail">Антицикл система</span>
+                    </div>
+                    <a href="NoriMyn_V3.1_Gemini.json" download class="btn btn-small">Скачать</a>
+                </div>
+
+                <div class="preset-item">
+                    <div class="preset-header">
+                        <h3>NoriMyn GPT v3.1</h3>
+                        <span class="preset-tag new">NEW</span>
+                    </div>
+                    <p class="preset-text">Обновлённая версия с поддержкой инфоблоков. Система живых NPC, Ultra Anti-Echo, экспериментальные HTML-артефакты и точный контроль длины ответов.</p>
                     <div class="preset-details">
                         <span class="detail">GPT-4o / 5.1</span>
-                        <span class="detail">NPC Control</span>
+                        <span class="detail">📊 Infoblocks</span>
                         <span class="detail">Ultra Anti-Echo</span>
                         <span class="detail">HTML Artifacts</span>
                     </div>
-                    <a href="NoriMyn_GPT_v3.0.json" download class="btn btn-small">Скачать</a>
-                </div>
-
-                <div class="preset-item">
-                    <div class="preset-header">
-                        <h3>NoriMyn Claude V4.0</h3>
-                        <span class="preset-tag new">NEW</span>
-                    </div>
-                    <p class="preset-text">Мега-обновление с режимом Thinking (думалка), HTML-визуализацией для красивых чатов, интерактивными кнопками выбора действий и расширенным контекстом до 18000 токенов. Теперь с поддержкой английского языка и улучшенной системой префилов.</p>
-                    <div class="preset-details">
-                        <span class="detail">🧠 Thinking Mode</span>
-                        <span class="detail">🎨 HTML Support</span>
-                        <span class="detail">🦭 Action Buttons</span>
-                        <span class="detail">18K Tokens</span>
-                        <span class="detail">ENG/RUS</span>
-                    </div>
-                    <a href="NoriMyn_ClaudeV4.0.json" download class="btn btn-small">Скачать</a>
-                </div>
-
-                <div class="preset-item">
-                    <div class="preset-header">
-                        <h3>NoriMyn V3.0</h3>
-                        <span class="preset-tag new">NEW</span>
-                    </div>
-                    <p class="preset-text">Последняя версия с улучшенным форматированием, GOD MODE и продвинутыми системами предотвращения циклов для Gemini.</p>
-                    <div class="preset-details">
-                        <span class="detail">Gemini</span>
-                        <span class="detail">GOD MODE</span>
-                        <span class="detail">Антицикл система</span>
-                        <span class="detail">Множественные POV</span>
-                    </div>
-                    <a href="NoriMyn_V3.0_Gemini.json" download class="btn btn-small">Скачать</a>
+                    <a href="NoriMyn_gpt_v3.1.json" download class="btn btn-small">Скачать</a>
                 </div>
             </div>
+        </div>
+
+        <div class="section">
+            <h2>Обязательные Регексы</h2>
+            
+            <div class="warning-box">
+                <strong>⚠️ Важно!</strong>
+                Для корректной работы инфоблоков необходимо установить регекс в SillyTavern. Без регекса инфоблок будет отображаться как обычный текст. Выберите версию в зависимости от языка интерфейса.
+            </div>
+
+            <div class="presets-list">
+                <div class="preset-item">
+                    <div class="preset-header">
+                        <h3>NoriVoid Regex — Русская версия</h3>
+                        <span class="preset-tag">🇷🇺 RUS</span>
+                    </div>
+                    <p class="preset-text">Регекс для русифицированных инфоблоков (Персонажи, Отношения, Мысли). Тёмно-фиолетовая тема с полупрозрачным фоном.</p>
+                    <div class="preset-details">
+                        <span class="detail">Русский интерфейс</span>
+                        <span class="detail">Dark Purple Theme</span>
+                        <span class="detail">Accordion Style</span>
+                    </div>
+                    <a href="norivoid_dark_rus_regex.json" download class="btn btn-small">Скачать RUS</a>
+                </div>
+
+                <div class="preset-item">
+                    <div class="preset-header">
+                        <h3>NoriVoid Regex — Английская версия</h3>
+                        <span class="preset-tag">🇬🇧 ENG</span>
+                    </div>
+                    <p class="preset-text">Регекс для англоязычных инфоблоков (Characters, Bonds, Thoughts). Тёмно-фиолетовая тема с полупрозрачным фоном.</p>
+                    <div class="preset-details">
+                        <span class="detail">English Interface</span>
+                        <span class="detail">Dark Purple Theme</span>
+                        <span class="detail">Accordion Style</span>
+                    </div>
+                    <a href="norivoid_dark_eng_regex.json" download class="btn btn-small">Скачать ENG</a>
+                </div>
+            </div>
+
+            <p style="color: #aaaaaa; margin-top: 30px; font-size: 0.9em; line-height: 1.6;">
+                <strong style="color: #ffffff;">Установка:</strong> Extensions → Regex Scripts → Import → выберите скачанный файл → включите скрипт (галочка Enabled).
+            </p>
         </div>
 
         <div class="section">
             <h2>Возможности</h2>
             <ul class="features-list">
                 <li><strong>Модули</strong>Каждый промт работает независимо. Миксуйте жанры, стили, тона и количество символов по желанию.</li>
+                <li><strong>Инфоблоки NoriVoid</strong>Визуальные блоки для отслеживания персонажей, отношений, атмосферы и мыслей в реальном времени.</li>
                 <li><strong>Персонажи под контролем</strong>Ваш бот никогда не пишет за вас. Мама Нори защитит вас от этого.</li>
                 <li><strong>Жанровые Режимы</strong>Романтика, Тёмная Романтика, Ангст, Комедия, Фэнтези, Экшн, Хоррор, Флафф.</li>
                 <li><strong>Гибкая длина ответов</strong>От компактных 100 слов до эпических 1200 и выше.</li>
                 <li><strong>Разнообразное лицо повествования</strong>Фокус на вашем user, фокус на char или всеведущая позиция.</li>
                 <li><strong>NSFW и русский язык</strong>Полный контроль над явным контентом и полная локализация.</li>
-                <li><strong>Thinking Mode (V4.0)</strong>Режим мыслительного процесса для более глубоких и продуманных ответов.</li>
-                <li><strong>HTML & Интерактив (V4.0)</strong>Красивое оформление чатов с HTML и кнопки выбора действий для игрового опыта.</li>
+                <li><strong>Thinking Mode (V4.1)</strong>Режим мыслительного процесса для более глубоких и продуманных ответов.</li>
+                <li><strong>HTML & Интерактив</strong>Красивое оформление чатов с HTML и кнопки выбора действий для игрового опыта.</li>
             </ul>
         </div>
 
@@ -478,36 +537,6 @@
 
                 <div class="preset-item">
                     <div class="preset-header">
-                        <h3>Nori Regex (Curly Brackets)</h3>
-                        <span class="preset-tag">SillyTavern</span>
-                    </div>
-                    <p class="preset-text">Оформление текста в фигурные скобки для стилизации.</p>
-                    <div class="preset-details"><span class="detail">Curly Brackets</span></div>
-                    <a href="regex-nori_curly_brackets_style.json" download class="btn btn-small">Загрузить</a>
-                </div>
-
-                <div class="preset-item">
-                    <div class="preset-header">
-                        <h3>Nori Regex (HTML Transitions)</h3>
-                        <span class="preset-tag">SillyTavern</span>
-                    </div>
-                    <p class="preset-text">HTML переходы для плавной смены содержимого.</p>
-                    <div class="preset-details"><span class="detail">HTML Transitions</span></div>
-                    <a href="regex-nori_html_transitions.json" download class="btn btn-small">Загрузить</a>
-                </div>
-
-                <div class="preset-item">
-                    <div class="preset-header">
-                        <h3>Nori Regex (Infoblock Cleanup)</h3>
-                        <span class="preset-tag">SillyTavern</span>
-                    </div>
-                    <p class="preset-text">Очистка информационных блоков от лишнего форматирования.</p>
-                    <div class="preset-details"><span class="detail">Infoblock Cleanup</span></div>
-                    <a href="regex-nori_infoblock_cleanup.json" download class="btn btn-small">Загрузить</a>
-                </div>
-
-                <div class="preset-item">
-                    <div class="preset-header">
                         <h3>Nori Regex (Thinking Cleanup)</h3>
                         <span class="preset-tag">SillyTavern</span>
                     </div>
@@ -525,7 +554,48 @@
             </p>
             <div class="presets-list">
                 
-                <!-- OLD GPT MOVED HERE -->
+                <div class="preset-item">
+                    <div class="preset-header">
+                        <h3>NoriMyn GPT v3.0</h3>
+                        <span class="preset-tag">Архив</span>
+                    </div>
+                    <p class="preset-text">Глобальный редизайн для GPT. Система живых NPC, строгий Ultra Anti-Echo, экспериментальные HTML-артефакты для мобильных, новые стили (Noir, Poetic) и точный контроль длины ответов.</p>
+                    <div class="preset-details">
+                        <span class="detail">GPT-4o / 5.1</span>
+                        <span class="detail">NPC Control</span>
+                        <span class="detail">Ultra Anti-Echo</span>
+                    </div>
+                    <a href="NoriMyn_GPT_v3.0.json" download class="btn btn-small">Скачать</a>
+                </div>
+
+                <div class="preset-item">
+                    <div class="preset-header">
+                        <h3>NoriMyn Claude V4.0</h3>
+                        <span class="preset-tag">Архив</span>
+                    </div>
+                    <p class="preset-text">Мега-обновление с режимом Thinking (думалка), HTML-визуализацией для красивых чатов, интерактивными кнопками выбора действий и расширенным контекстом до 18000 токенов.</p>
+                    <div class="preset-details">
+                        <span class="detail">🧠 Thinking Mode</span>
+                        <span class="detail">🎨 HTML Support</span>
+                        <span class="detail">18K Tokens</span>
+                    </div>
+                    <a href="NoriMyn_ClaudeV4.0.json" download class="btn btn-small">Скачать</a>
+                </div>
+
+                <div class="preset-item">
+                    <div class="preset-header">
+                        <h3>NoriMyn V3.0</h3>
+                        <span class="preset-tag">Архив</span>
+                    </div>
+                    <p class="preset-text">Последняя версия с улучшенным форматированием, GOD MODE и продвинутыми системами предотвращения циклов для Gemini.</p>
+                    <div class="preset-details">
+                        <span class="detail">Gemini</span>
+                        <span class="detail">GOD MODE</span>
+                        <span class="detail">Антицикл система</span>
+                    </div>
+                    <a href="NoriMyn_V3.0_Gemini.json" download class="btn btn-small">Скачать</a>
+                </div>
+
                 <div class="preset-item">
                     <div class="preset-header">
                         <h3>NoriMyn GPT (Legacy)</h3>
@@ -535,7 +605,6 @@
                     <div class="preset-details">
                         <span class="detail">Антицензура</span>
                         <span class="detail">8+ жанров</span>
-                        <span class="detail">Legacy</span>
                     </div>
                     <a href="NoriMyn_gpt.json" download class="btn btn-small">Скачать</a>
                 </div>
@@ -549,7 +618,6 @@
                     <div class="preset-details">
                         <span class="detail">Claude</span>
                         <span class="detail">8+ жанров</span>
-                        <span class="detail">Русский язык</span>
                     </div>
                     <a href="NoriMyn_ClaudeV3.0.json" download class="btn btn-small">Скачать</a>
                 </div>
@@ -563,7 +631,6 @@
                     <div class="preset-details">
                         <span class="detail">GOD MODE</span>
                         <span class="detail">Антицикл система</span>
-                        <span class="detail">Множественные POV</span>
                     </div>
                     <a href="Nori_V2.5_[GemClau].json" download class="btn btn-small">Скачать</a>
                 </div>
@@ -589,7 +656,6 @@
                     <p class="preset-text">Фикс-версия пресета для Claude с тумблерами.</p>
                     <div class="preset-details">
                         <span class="detail">Fix-версия</span>
-                        <span class="detail">Тумблеры</span>
                     </div>
                     <a href="NoriMyn_Claude_miniFix.json" download class="btn btn-small">Скачать</a>
                 </div>
@@ -615,7 +681,6 @@
                     <p class="preset-text">Экспериментальные варианты для продвинутых пользователей.</p>
                     <div class="preset-details">
                         <span class="detail">Экспериментальные</span>
-                        <span class="detail">Кастомизация</span>
                     </div>
                     <div style="display: flex; gap: 10px; margin-top: 15px; flex-wrap: wrap;">
                         <a href="33sty0.json" download class="btn btn-small">Вариант 1</a>
