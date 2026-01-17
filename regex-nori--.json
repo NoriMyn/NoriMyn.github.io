@@ -1,17 +1,15 @@
 {
-    "id": "90994688-80d6-4b80-8c57-5735f9f803cf",
-    "scriptName": "Nori--",
-    "findRegex": "^\\s*-{3,}\\s*\\n",
+    "id": "c0897b40-891e-4c32-b6f7-de4e898784ef",
+    "scriptName": "---",
+    "findRegex": "^---\\s*\\n?",
     "replaceString": "",
     "trimStrings": [],
     "placement": [
-        1,
-        2,
-        5
+        2
     ],
     "disabled": false,
-    "markdownOnly": false,
-    "promptOnly": false,
+    "markdownOnly": true,
+    "promptOnly": true,
     "runOnEdit": true,
     "substituteRegex": 0,
     "minDepth": null,
