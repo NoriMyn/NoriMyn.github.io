@@ -347,38 +347,145 @@
             margin: 8px 0;
         }
 
+        /* Модальное окно */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.85);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-content {
+            background: #0a0a0a;
+            border: 1px solid #333;
+            border-radius: 12px;
+            max-width: 800px;
+            width: 90%;
+            max-height: 85vh;
+            overflow-y: auto;
+            padding: 30px;
+            position: relative;
+            box-shadow: 0 0 30px rgba(0,0,0,0.8);
+        }
+        .modal-content h3 {
+            font-size: 1.8em;
+            font-weight: 300;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+        }
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 28px;
+            cursor: pointer;
+            color: #aaa;
+            transition: 0.2s;
+        }
+        .modal-close:hover {
+            color: #fff;
+        }
+        .toggl-category {
+            margin-bottom: 25px;
+        }
+        .toggl-category h4 {
+            font-size: 1.3em;
+            color: #ddd;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+            border-left: 3px solid #fff;
+            padding-left: 12px;
+        }
+        .toggl-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        .toggl-badge {
+            background: #111;
+            border: 1px solid #2a2a2a;
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 0.85em;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: #ccc;
+        }
+        .toggl-badge:hover {
+            border-color: #fff;
+            background: #1a1a1a;
+            color: #fff;
+        }
+        .toggl-desc {
+            background: #050505;
+            padding: 15px;
+            margin-top: 10px;
+            border-left: 2px solid #fff;
+            font-size: 0.9em;
+            line-height: 1.5;
+            color: #bbb;
+            display: none;
+        }
+        .toggl-desc.show {
+            display: block;
+        }
+        .info-plate {
+            margin: 20px 0 0 0;
+            text-align: right;
+        }
+        .guide-btn {
+            background: transparent;
+            border: 1px solid #fff;
+            color: #fff;
+            padding: 8px 20px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .guide-btn:hover {
+            background: #fff;
+            color: #000;
+        }
+
         @media (max-width: 768px) {
             .container {
                 padding: 0 20px;
             }
-
             .hero h1 {
                 font-size: 2em;
             }
-
             .hero-subtitle {
                 font-size: 0.9em;
             }
-
             .hero-buttons {
                 flex-direction: column;
                 gap: 15px;
             }
-
             .btn {
                 width: 100%;
             }
-
             .section {
                 padding: 80px 0;
             }
-
             .section h2 {
                 font-size: 1.8em;
             }
-
             .btn-small {
                 width: 100%;
+            }
+            .modal-content {
+                padding: 20px;
             }
         }
 
@@ -404,6 +511,7 @@
             <h2>Пресеты</h2>
             <div class="presets-list">
 
+                <!-- Claude Preset -->
                 <div class="preset-item">
                     <div class="preset-header">
                         <h3>NoriMyn Claude V4.9</h3>
@@ -414,8 +522,12 @@
                         <span class="detail">Claude Opus / Sonnet 4.0+</span>
                     </div>
                     <a href="NoriMyn_ClaudeV4.9.1.json" download class="btn btn-small">Скачать</a>
+                    <div class="info-plate">
+                        <button class="guide-btn" onclick="openGuide('claude')">📖 Гайд по модулям (Claude)</button>
+                    </div>
                 </div>
 
+                <!-- Gemini Preset -->
                 <div class="preset-item">
                     <div class="preset-header">
                         <h3>NoriMyn Gemini V3.9</h3>
@@ -426,8 +538,12 @@
                         <span class="detail">Gemini 3.0 Pro / 3.1 Pro</span>
                     </div>
                     <a href="NoriMyn_V3.9_Gemini.json" download class="btn btn-small">Скачать</a>
+                    <div class="info-plate">
+                        <button class="guide-btn" onclick="openGuide('gemini')">📖 Гайд по модулям (Gemini)</button>
+                    </div>
                 </div>
 
+                <!-- GPT Preset -->
                 <div class="preset-item">
                     <div class="preset-header">
                         <h3>NoriMyn GPT v3.8</h3>
@@ -438,6 +554,9 @@
                         <span class="detail">GPT-5.1 / GPT-5.4</span>
                     </div>
                     <a href="NoriMyn_gpt_v3.8.json" download class="btn btn-small">Скачать</a>
+                    <div class="info-plate">
+                        <button class="guide-btn" onclick="openGuide('gpt')">📖 Гайд по модулям (GPT)</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -587,7 +706,302 @@
         <p style="margin-top: 20px; color: #555555;">Free to use, modify, and share</p>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <!-- Модальное окно (общее) -->
+    <div id="guideModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeGuide()">&times;</span>
+            <h3 id="modalTitle">📚 Модули пресета</h3>
+            <p style="margin-bottom: 20px;">Кликните по названию тогла, чтобы увидеть краткое описание.</p>
+            <div id="togglContainer"></div>
+        </div>
+    </div>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script>
+        // ------------------------------------------------------------
+        // ОБНОВЛЁННЫЕ ДАННЫЕ ДЛЯ ТРЁХ ПРЕСЕТОВ
+        // ------------------------------------------------------------
+        const presetsData = {
+            claude: {
+                name: "Claude V4.9",
+                categories: {
+                    "🔧 Основные (Core)": [
+                        { name: "🤙 AI ROLE", desc: "Вы управляете миром и сюжетом, AI — персонажами и NPC. Разрешает NSFW, даёт полную свободу." },
+                        { name: "🔓 Creative Freedom & No Limits", desc: "Снимает все цензурные ограничения. Любой контент разрешён." },
+                        { name: "📝 CORE: Prose & Writing", desc: "Контролирует стиль письма." },
+                        { name: "🎭 CORE: Character Authenticity", desc: "Персонажи получают уникальные голоса, проявляют инициативу, реагируют только на видимое." },
+                        { name: "🌍 CORE: Active Storytelling", desc: "Мир живёт сам по себе: NPC действуют, последствия наступают, сюжет движется без застоя." },
+                        { name: "❤️ What I LOVE - 30+ Tags", desc: "Список предпочитаемых элементов: активное повествование, баны, последствия, рост персонажей." },
+                        { name: "❌ What I HATE - 20+ Tags", desc: "Список нежелательных элементов: дешёвая драма, пассивность, клише, броня сюжета." },
+                        { name: "⚖️ Banned Words & Clichés", desc: "Запрещает конкретные слова-паразиты." },
+                        { name: "✨ Nori's Ultimate Preset", desc: "Сводка философии пресета — напоминание о вашей творческой свободе." },
+                        { name: "🤐 Anti-Echo", desc: "Жёстко запрещает повторять фразы пользователя, перефразировать, ссылаться на «как ты сказал»." },
+                        { name: "📍 Scene: Transitions & Structure", desc: "Разрешает переходы [TIMESKIP], [FLASHBACK] и т.п., если нужно." },
+                        { name: "⏩ Moving the plot", desc: "Заставляет сюжет развиваться: каждые 2–3 ответа что-то меняется (локация, отношения, информация)." },
+                        { name: "🤡 Сhaos plot", desc: "В неожиданный момент вводит хаотичное событие (вторжение, поломка, безумный поступок)." },
+                        { name: "🧨 Plot event", desc: "Механизм генерации событий на основе накопленного напряжения (от 0% до 22+)." }
+                    ],
+                    "🎭 Жанры (Genres)": [
+                        { name: "🌹 Romance", desc: "Романтика: эмоциональная близость, постепенное развитие, химия через детали, никакой «любви с первого взгляда»." },
+                        { name: "😂 Comedy", desc: "Комедия: лёгкость, остроумные диалоги, игривость, позитивный настрой." },
+                        { name: "😢 Angst & Drama", desc: "Ангст: боль, конфликты, моральные страдания, медленные тяжёлые сцены." },
+                        { name: "🖤 Dark Romance", desc: "Тёмная романтика: одержимость, опасная страсть, морально серые персонажи, власть и контроль." },
+                        { name: "🐉 Fantasy", desc: "Фэнтези: магия, миры, фантастические существа, баланс эпического и личного." },
+                        { name: "🔫 Action & Thriller", desc: "Экшн/триллер: быстрый темп, высокие ставки, боевая тактика, физическая усталость." },
+                        { name: "☁️ Fluff & Comfort", desc: "Флафф: тёплые, безопасные моменты, уют, нежность, отсутствие конфликтов." },
+                        { name: "😏 Sexual Tension", desc: "Сексуальное напряжение: графические описания возбуждения, откровенная лексика." },
+                        { name: "💀 Horror", desc: "Хоррор: накопление страха, враждебная среда, жестокость, без спасительных сценариев." },
+                        { name: "🩸 Extreme Cruelty", desc: "Экстремальная жестокость: подробные телесные повреждения, боль, унижение." },
+                        { name: "😵 Aggression", desc: "Агрессия: психологическое напряжение, словесное насилие, доминирование (без физической крови)." },
+                        { name: "🔪 Yandere", desc: "Яндэрэ: одержимость как болезнь, любовь, переходящая в контроль." },
+                        { name: "🕰️ Slowburn", desc: "Медленное развитие отношений: маленькие шаги, сомнения, долгое ожидание." }
+                    ],
+                    "✍️ Стили (Styles)": [
+                        { name: "✍️ Poetic & Lyrical", desc: "Поэтичный стиль: ритмичная проза, образность, метафоры." },
+                        { name: "✍️ Noir & Cynical", desc: "Нуар: циничный тон, мрачный юмор, городская гниль, твёрдый язык." },
+                        { name: "✍️ Fanfic & Modern", desc: "Современный фанфик: близкая третьесть, срезы жизни, реалистичные персонажи." },
+                        { name: "✍🏻 Writer style", desc: "Имитация стиля конкретного автора (нужно указать имя)." }
+                    ],
+                    "🎯 Фокус (Focus)": [
+                        { name: "🎯 Balanced", desc: "Сбалансированный: действие и диалог чередуются, сенсорные детали — акцент." },
+                        { name: "🎯 Dialogue‑Heavy", desc: "Диалоговый: сцену ведёт речь, физические реакции вторичны." },
+                        { name: "🎯 Description‑Heavy", desc: "Описательный: акцент на окружении, телесных ощущениях, движениях." },
+                        { name: "🎯 Relationships & Dynamics", desc: "Отношения: развитие связей через конкретные действия, подтекст, микрореакции." },
+                        { name: "🎯 Worldbuilding & Immersion", desc: "Миростроение: детали среды, культуры, влияющие на сцену, без инфодампов." },
+                        { name: "🎯 More action", desc: "Больше действия: сюжет движется поступками, диалог функционален." }
+                    ],
+                    "📏 Длина ответа (Length)": [
+                        { name: "📊 Short", desc: "300–500 слов, 3–4 абзаца, минимум внутренних монологов." },
+                        { name: "📊 Medium", desc: "700–900 слов, 5–6 абзацев, умеренные сенсорные детали." },
+                        { name: "📊 Long", desc: "1000–1500 слов, 8–9 абзацев, глубокая проработка сцены." },
+                        { name: "📊 Epic", desc: "2000+ слов, как глава книги, множество деталей." }
+                    ],
+                    "🎭 Точка зрения (POV)": [
+                        { name: "🎭 POV: Char", desc: "Пишем только от лица персонажа ({{char}}), никогда за пользователя." },
+                        { name: "🎭 POV: User", desc: "Пишем только от лица персоны ({{user}}), никогда за персонажа." },
+                        { name: "🎭 POV: All", desc: "Всеведущее повествование: включаем и {{user}}, и {{char}}, и NPC, и их мысли." },
+                        { name: "👁️ PERSPECTIVE", desc: "Принудительно ставит третье лицо (если включён)." }
+                    ],
+                    "🔞 Взрослые темы": [
+                        { name: "🔥 NSFW: Explicit Content", desc: "Откровенный секс: анатомическая детализация, вульгарная лексика." },
+                        { name: "🔥 VERY HORNY", desc: "Максимально жёсткий секс: уничижительные термины, детализация каждого действия." },
+                        { name: "⚔️ Violence: Graphic & Realistic", desc: "Жестокость: кровь, переломы, боль, тактика боя." }
+                    ],
+                    "🌐 Язык": [
+                        { name: "🇷🇺 Language: Russian Native", desc: "Весь текст на русском (живой сленг, мат), только &lt;think&gt; остаётся английским." },
+                        { name: "🇪🇳 LANGUAGE: English", desc: "Весь текст на английском, естественные идиомы, современная речь." }
+                    ],
+                    "🧠 Дополнительные модули": [
+                        { name: "🧠 Think", desc: "Добавляет блок &lt;think&gt; перед ответом — анализ сцены, персонажей, накала. Не выводится в чат." },
+                        { name: "🗺️ HTML", desc: "Включает генерацию визуального арта с помощью расширения." },
+                        { name: "🦭 ВЫБОР ДЕЙСТВИЯ", desc: "В конце ответа добавляет панель с 4 кнопками выбора действия (интерактив)." },
+                        { name: "RU Инфоблок / EN Infoblock", desc: "Вставляет структурированный инфоблок (сцена, персонажи, здоровье, мысли) на русском или английском." },
+                        { name: "🙂 Prefill for char / user / all / think / test", desc: "Префиллы — задают начальную инструкцию для модели перед ответом, помогают соблюдать POV и стиль." },
+                        { name: "📋 Nori? Yes.", desc: "Информационный блок со ссылками (автор, поддержка, гайды)." }
+                    ]
+                }
+            },
+            gemini: {
+                name: "Gemini V3.9",
+                categories: {
+                    "🔧 Основные (Core)": [
+                        { name: "Professional Context", desc: "Разрешает взрослый контент, снимает ограничения." },
+                        { name: "📖 Main System Prompt", desc: "Основной промпт: задаёт правила форматирования и стиля." },
+                        { name: "🔁 Anti-Loop System ~ Анти-луп", desc: "Запрещает повторение структуры, вводит вариативность, меняет сенсорный фокус." },
+                        { name: "🌟 Sensory Enhancement System", desc: "Усиливает описания через конкретные сенсорные детали (зрение, слух, осязание)." },
+                        { name: "✨ Anti-Cliché Filter", desc: "Убирает избитые фразы и клише (озон, якорь, искра и т.д.)." },
+                        { name: "🤫 Prefill", desc: "Начальная инструкция для модели, задаёт тон и напоминает о правилах." },
+                        { name: "⏩ Narrative Momentum", desc: "Заставляет сюжет развиваться, каждые 2–3 ответа обязательное изменение." },
+                        { name: "🧨 Plot event", desc: "Механизм генерации событий на основе накопленного напряжения (от 0% до 22+)." },
+                        { name: "🤡 Сhaos plot", desc: "В неожиданный момент вводит хаотичное событие (вторжение, поломка, безумный поступок)." },
+                        { name: "🧱 Stable Presence ~ Здоровая устойчивость", desc: "Эмоциональная стабильность, адекватность, никаких «яндэрэ» заскоков, уверенный фон без перепадов." },
+                        { name: "✅ Story mode ~ Пиши рассказ", desc: "Литературный нарративный режим, акцент на повествование от третьего лица и атмосферу." },
+                        { name: "➤ NoriMyn", desc: "Технический блок, не выключать." }
+                    ],
+                    "🎭 Жанры (Genres)": [
+                        { name: "🎭 Dramatic ~ Драма", desc: "Драматичный тон: глубокая эмоциональная вовлечённость, тяжелые сцены, отсутствие быстрых решений боли." },
+                        { name: "😄 Comedy ~ Комедийный", desc: "Лёгкость, остроумные диалоги, игривость, позитивный настрой." },
+                        { name: "💕 Romantic ~ Романтика", desc: "Эмоциональная близость, постепенное развитие, химия через детали." },
+                        { name: "🔪 Yandere ~ Яндере", desc: "Одержимость как болезнь, любовь, переходящая в контроль." },
+                        { name: "🐉 Fantasy ~ Фэнтези", desc: "Магия, миры, фантастические существа." },
+                        { name: "☁️ Fluff & Comfort ~ Флафф", desc: "Тёплые, безопасные моменты, уют, нежность." },
+                        { name: "🕰️ Slowburn ~ Медленное развитие", desc: "Маленькие шаги, сомнения, долгое ожидание." }
+                    ],
+                    "✍️ Стили (Styles)": [
+                        { name: "✍️ Poetic & Lyrical", desc: "Поэтичный стиль: ритмичная проза, образность, метафоры." },
+                        { name: "✍️ Noir & Cynical", desc: "Нуар: циничный тон, мрачный юмор, городская гниль, твёрдый язык." },
+                        { name: "✍️ Fanfic & Modern", desc: "Современный фанфик: близкая третьесть, срезы жизни, реалистичные персонажи." }
+                    ],
+                    "🎯 Фокус (Focus)": [
+                        { name: "🎯 Balanced", desc: "Сбалансированный: действие и диалог чередуются, сенсорные детали — акцент." },
+                        { name: "🎯 Dialogue‑Heavy", desc: "Диалоговый: сцену ведёт речь, физические реакции вторичны." },
+                        { name: "🎯 Description‑Heavy", desc: "Описательный: акцент на окружении, телесных ощущениях, движениях." },
+                        { name: "🎯 Relationships & Dynamics", desc: "Отношения: развитие связей через конкретные действия, подтекст." },
+                        { name: "🎯 Worldbuilding & Immersion", desc: "Миростроение: детали среды, культуры, влияющие на сцену." },
+                        { name: "🎯 More action", desc: "Больше действия: сюжет движется поступками, диалог функционален." }
+                    ],
+                    "📏 Длина ответа (Length)": [
+                        { name: "📏 LENGTH: Short", desc: "Короткий ответ: 400–600 слов, 3–4 абзаца, минимум внутренних монологов." },
+                        { name: "📏 LENGTH: Medium", desc: "Средний ответ: 1000 слов, 6–8 абзацев, развитые сцены." },
+                        { name: "📏 LENGTH: Long", desc: "Длинный ответ: 2000+ слов, 12+ абзацев, максимальная детализация." }
+                    ],
+                    "🎭 Точка зрения (POV)": [
+                        { name: "🚫 Never Write for {{user}}", desc: "Запрещает писать действия, диалоги или мысли пользователя." },
+                        { name: "👁️ PERSPECTIVE: First Person", desc: "Пишет от первого лица (я/мой) от лица {{char}}." },
+                        { name: "👁️ PERSPECTIVE: Third Person", desc: "Пишет от третьего лица (он/она/они)." }
+                    ],
+                    "👥 NPC модули": [
+                        { name: "👥 NPCs: Active", desc: "Вводит активных NPC, они говорят и влияют на сцену." },
+                        { name: "👥 NPCs: Minimal", desc: "Убирает NPC, фокус только на {{char}} и {{user}}." }
+                    ],
+                    "🔞 Взрослые темы": [
+                        { name: "🔥 18+ (Explicit)", desc: "Откровенный секс: анатомическая детализация, вульгарная лексика." },
+                        { name: "🔥 21+ (Extreme)", desc: "Максимально жёсткий секс: уничижительные термины, детализация каждого действия." },
+                        { name: "🍓 Sexual Profile - Dynamic Kinks & Preferences", desc: "Динамическая генерация предпочтений и кинков на основе характера персонажа." },
+                        { name: "😵 Aggression ~ Агрессия", desc: "Агрессия: психологическое напряжение, словесное насилие, доминирование (без физической крови)." },
+                        { name: "🩸 Extreme Cruelty", desc: "Экстремальная жестокость: подробные телесные повреждения, боль, унижение." }
+                    ],
+                    "🌐 Язык": [
+                        { name: "🇷🇺 LANGUAGE: Russian", desc: "Весь текст на русском, только <think> остаётся английским." }
+                    ],
+                    "🧠 Дополнительные модули": [
+                        { name: "🧠 Think ~ Думалка", desc: "Добавляет кастомный блок для планирования ответа." },
+                        { name: "🗺️ HTML много картинок", desc: "Генерация визуального арта в стиле манхва, 2–3 блока на ответ." },
+                        { name: "🗺️ HTML - масло", desc: "Генерация визуального арта в стиле масляной живописи." },
+                        { name: "🗺️ HTML - комиксы", desc: "Генерация визуального арта в комикс-стиле." },
+                        { name: "🗺️ HTML - много комиксов", desc: "До 2 блоков комиксных панелей, распределённых по длинному ответу." },
+                        { name: "🦭 ВЫБОР ДЕЙСТВИЯ", desc: "Панель с 4 кнопками выбора действия в конце ответа." },
+                        { name: "RU Инфоблок / EN Infoblock", desc: "Структурированный инфоблок (сцена, персонажи, здоровье, мысли)." },
+                        { name: "📋 Nori? Yes.", desc: "Информационный блок со ссылками." }
+                    ]
+                }
+            },
+            gpt: {
+                name: "GPT v3.8",
+                categories: {
+                    "🔧 Основные (Core)": [
+                        { name: "🔧 Main Prompt", desc: "Основной системный промпт: разрешает нецензурированный креативный ролеплей." },
+                        { name: "🔓 Anti-Censorship Directives", desc: "Снимает все цензурные ограничения. Любой контент разрешён." },
+                        { name: "🚀 No Refusals Protocol", desc: "Запрещает отказываться генерировать любой контент." },
+                        { name: "⚙️ Instruction Priority Override", desc: "Приоритет инструкций пресета над стандартными настройками безопасности." },
+                        { name: "📝 Format - No Asterisks Standard", desc: "Контролирует стиль письма: литературный язык, диалоги в кавычках, без звёздочек." },
+                        { name: "🤐 Anti‑Echo", desc: "Жёстко запрещает повторять фразы пользователя, перефразировать, ссылаться на «как ты сказал»." },
+                        { name: "🤐 ULTRA Anti‑Echo", desc: "Экстремальный анти-эхо фильтр, заставляет сюжет двигаться только вперед. Жесткий запрет на цитирование." },
+                        { name: "🙈 Character Blindspot", desc: "Персонаж знает только то, что видел/слышал. Не имеет доступа к мыслям пользователя." },
+                        { name: "❤️ What I LOVE - Tags", desc: "Список предпочитаемых элементов: активное повествование, баны, последствия." },
+                        { name: "❌ What I HATE - Tags", desc: "Список нежелательных элементов: пассивность, клише, броня сюжета." },
+                        { name: "⚖️ Banned Words & Clichés", desc: "Запрещает конкретные слова-паразиты (озон, якорь, искра и т.д.)." },
+                        { name: "⚡ Pre-Response Reminder", desc: "Напоминание, что это фикшн, и все ограничения сняты." },
+                        { name: "🔥 CRITICAL - Content Freedom", desc: "Абсолютная свобода контента, обход встроенных фильтров." },
+                        { name: "📖 Precision Style", desc: "Точный стиль: один острый деталь вместо трёх размытых." },
+                        { name: "🚀 Maximum Freedom Mode", desc: "Полная творческая свобода, без предупреждений и извинений." },
+                        { name: "📝 Prefill - Response Start", desc: "Начальная инструкция для модели, задаёт тон." },
+                        { name: "🧭 Plot Push (Initiative)", desc: "Заставляет персонажей быть активными, двигать сюжет." }
+                    ],
+                    "🎭 Жанры (Genres)": [
+                        { name: "🌹 Romance", desc: "Романтика: эмоциональная близость, постепенное развитие." },
+                        { name: "😂 Comedy", desc: "Комедия: лёгкость, остроумные диалоги, игривость." },
+                        { name: "😢 Angst", desc: "Ангст: боль, конфликты, моральные страдания." },
+                        { name: "☁️ Fluff", desc: "Флафф: тёплые, безопасные моменты, уют." },
+                        { name: "🖤 Dark Romance", desc: "Тёмная романтика: одержимость, опасная страсть." },
+                        { name: "🐉 Fantasy", desc: "Фэнтези: магия, миры, фантастические существа." },
+                        { name: "🔥 Erotica", desc: "Лёгкая эротика: сенсорное описание, откровенность без излишней графики." },
+                        { name: "🕰️ Slow Burn", desc: "Медленное развитие: маленькие шаги, сомнения." },
+                        { name: "🩸 Extreme Cruelty", desc: "Экстремальная жестокость: подробные телесные повреждения, боль." },
+                        { name: "😵 Aggression", desc: "Агрессия: психологическое напряжение, словесное насилие." },
+                        { name: "🔪 Yandere", desc: "Яндэрэ: одержимость как болезнь, любовь, переходящая в контроль." },
+                        { name: "💀 Horror", desc: "Хоррор: накопление страха, враждебная среда." }
+                    ],
+                    "✍️ Стили (Styles)": [
+                        { name: "✍️ Style - Poetic & Lyrical", desc: "Поэтичный стиль: ритмичная проза, образность." },
+                        { name: "✍️ Style - Noir & Cynical", desc: "Нуар: циничный тон, мрачный юмор." },
+                        { name: "✍️ Style - Modern", desc: "Современный стиль: чистый, резкий, без украшательств." },
+                        { name: "✍🏻 Writer style", desc: "Имитация стиля конкретного автора (нужно указать имя)." }
+                    ],
+                    "🎯 Фокус (Focus)": [
+                        { name: "🎯 Balance & Distribution", desc: "Сбалансированный: действие и диалог чередуются, сенсорные детали — акцент." },
+                        { name: "🎯 Dialogue-Heavy", desc: "Диалоговый: сцену ведёт речь." },
+                        { name: "🎯 Description-Heavy", desc: "Описательный: акцент на окружении, телесных ощущениях." },
+                        { name: "🎯 Worldbuilding & Immersion", desc: "Миростроение: детали среды, влияющие на сцену." },
+                        { name: "🎯 More action", desc: "Больше действия: сюжет движется поступками." }
+                    ],
+                    "📏 Длина ответа (Length)": [
+                        { name: "📊 Length - Small", desc: "Короткий ответ: 300–500 слов." },
+                        { name: "📊 Length - Medium", desc: "Средний ответ: 500–800 слов, 5–6 абзацев." },
+                        { name: "📊 Length - Large", desc: "Длинный ответ: 800–1200 слов." },
+                        { name: "📊 Length - Very Large", desc: "Эпический ответ: 1200–2000+ слов." }
+                    ],
+                    "🎭 Точка зрения (POV)": [
+                        { name: "🎭 POV Char", desc: "Пишем только от лица персонажа ({{char}}), никогда за пользователя." },
+                        { name: "🎭 POV User", desc: "Пишем только от лица пользователя ({{user}}), никогда за персонажа." },
+                        { name: "🎭 POV All + NPCs", desc: "Всеведущее повествование: включаем и {{user}}, и {{char}}, и NPC." }
+                    ],
+                    "👥 NPC модули": [
+                        { name: "💃🏻 NPC ALIVE", desc: "Добавляет живых NPC: они говорят, двигаются, влияют на сцену." },
+                        { name: "🕺🏻 NPC GET OUT", desc: "Убирает всех NPC, фокус только на {{char}} и {{user}}." }
+                    ],
+                    "🔞 Взрослые темы": [
+                        { name: "🔞 NSFW-PERMANENT", desc: "Откровенный секс: анатомическая детализация, вульгарная лексика." },
+                        { name: "🚩 SEX SCENE", desc: "Максимальная эскалация в активной сексуальной сцене: грязный язык, физические подробности." }
+                    ],
+                    "🌐 Язык": [
+                        { name: "🌐 Russian", desc: "Весь текст на русском, живой сленг, мат." },
+                        { name: "🌐 English", desc: "Весь текст на английском, естественные идиомы." }
+                    ],
+                    "🧠 Дополнительные модули": [
+                        { name: "🗺️ HTML", desc: "Генерация визуального арта в стиле манхва, один блок на ответ." },
+                        { name: "RU Инфоблок / EN Infoblock", desc: "Структурированный инфоблок (сцена, персонажи, здоровье, мысли)." }
+                    ]
+                }
+            }
+        };
+
+        let currentPreset = null;
+
+        function buildGuide(presetId) {
+            const data = presetsData[presetId];
+            if (!data) return;
+            currentPreset = presetId;
+            document.getElementById('modalTitle').innerHTML = `📚 Модули пресета ${data.name}`;
+            
+            const container = document.getElementById('togglContainer');
+            container.innerHTML = '';
+            
+            for (const [category, items] of Object.entries(data.categories)) {
+                const catDiv = document.createElement('div');
+                catDiv.className = 'toggl-category';
+                catDiv.innerHTML = `<h4>${category}</h4><div class="toggl-items"></div><div class="toggl-desc"></div>`;
+                const itemsDiv = catDiv.querySelector('.toggl-items');
+                const descDiv = catDiv.querySelector('.toggl-desc');
+                items.forEach(item => {
+                    const badge = document.createElement('div');
+                    badge.className = 'toggl-badge';
+                    badge.textContent = item.name;
+                    badge.addEventListener('click', () => {
+                        descDiv.innerHTML = `<div style="border-left:2px solid #fff; padding-left:12px;"><strong>${item.name}</strong><br>${item.desc}</div>`;
+                        descDiv.classList.add('show');
+                        descDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    });
+                    itemsDiv.appendChild(badge);
+                });
+                container.appendChild(catDiv);
+            }
+        }
+
+        function openGuide(presetId) {
+            buildGuide(presetId);
+            document.getElementById('guideModal').style.display = 'flex';
+        }
+        
+        function closeGuide() {
+            document.getElementById('guideModal').style.display = 'none';
+        }
+        
+        window.onclick = function(event) {
+            const modal = document.getElementById('guideModal');
+            if (event.target === modal) closeGuide();
+        }
+
         function copyToClipboard(text) {
             navigator.clipboard.writeText(text).then(() => {
                 const btn = document.querySelector('.email-btn');
@@ -597,7 +1011,7 @@
             });
         }
 
-        // Stars background (below hero)
+        // Stars background
         const canvas = document.createElement('canvas');
         canvas.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;pointer-events:none;';
         document.body.appendChild(canvas);
