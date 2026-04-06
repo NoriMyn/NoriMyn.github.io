@@ -617,56 +617,30 @@
             </ul>
         </div>
 
-        <div class="section">
-            <h2>Regex Система</h2>
-            <p style="color: #aaaaaa; margin-bottom: 40px; font-size: 0.95em; line-height: 1.6;">
-                Набор регулярных выражений для SillyTavern/ST-fork. Улучшает визуальное представление, управляет токенами контекста и автоматизирует обработку вывода AI.
-            </p>
-            <div class="presets-list">
-                <div class="preset-item">
-                    <div class="preset-header">
-                        <h3>Nori Regex (---)</h3>
-                        <span class="preset-tag">SillyTavern</span>
-                    </div>
-                    <p class="preset-text">Удаляет строки разделителей (три и более дефиса подряд).</p>
-                    <div class="preset-details"><span class="detail">Удаление разделителей</span></div>
-                    <a href="regex-nori--.json" download class="btn btn-small">Загрузить</a>
-                </div>
-
-                <div class="preset-item">
-                    <div class="preset-header">
-                        <h3>Nori Regex (Think Cleanup)</h3>
-                        <span class="preset-tag">SillyTavern</span>
-                    </div>
-                    <p class="preset-text">Удаление или оформление блоков мыслительного процесса.</p>
-                    <div class="preset-details"><span class="detail">Think Cleanup</span></div>
-                    <a href="regex-nori_think_cleanup_(optional).json" download class="btn btn-small">Загрузить</a>
-                </div>
-
-                <div class="preset-item">
-                    <div class="preset-header">
-                        <h3>Nori Regex (Thinking Cleanup)</h3>
-                        <span class="preset-tag">SillyTavern</span>
-                    </div>
-                    <p class="preset-text">Удаление или оформление блоков мыслительного процесса.</p>
-                    <div class="preset-details"><span class="detail">Thinking Cleanup</span></div>
-                    <a href="regex-nori_thinking_cleanup_(optional).json" download class="btn btn-small">Загрузить</a>
-                </div>
-
-                <div class="preset-item">
-                    <div class="preset-header">
-                        <h3>Nori Regex (DIV Cleanup)</h3>
-                        <span class="preset-tag new">NEW</span>
-                    </div>
-                    <p class="preset-text">Вырезает div с артом из контекста — картинка в чате остаётся, но в общий счётчик токенов уже не идёт. Нужен если пользуетесь <a href="https://t.me/MoriNori_hi/187" target="_blank" style="color: #ffffff; text-decoration: underline;">генерацией артов по этой инструкции</a>.</p>
-                    <div class="preset-details">
-                        <span class="detail">DIV Cleanup</span>
-                        <span class="detail">Экономия токенов</span>
-                    </div>
-                    <a href="regex-nori_ DIVCleanup.json" download class="btn btn-small">Загрузить</a>
-                </div>
+<div class="section">
+    <h2>Regex Система</h2>
+    <p style="color: #aaaaaa; margin-bottom: 40px; font-size: 0.95em; line-height: 1.6;">
+        Набор регексов для SillyTavern в формате расширения. Помогает очищать контекст от думалки, HTML, инфоблоков и других служебных элементов, чтобы они не мешали генерации и не засоряли общий контекст.
+    </p>
+    <div class="presets-list">
+        <div class="preset-item">
+            <div class="preset-header">
+                <h3>🐈‍⬛ Regex Manager by NoriMyn</h3>
+                <span class="preset-tag">SillyTavern</span>
             </div>
+            <p class="preset-text">
+                Расширение с набором полезных регексов для SillyTavern. Удаляет из контекста блоки <code><think></code>, <code><thinking></code>, инфоблоки, HTML и другие служебные элементы. Устанавливается через менеджер расширений SillyTavern, после чего достаточно открыть настройки и отметить нужные галочки.
+            </p>
+            <div class="preset-details">
+                <span class="detail">Think Cleanup</span>
+                <span class="detail">Thinking Cleanup</span>
+                <span class="detail">Infoblock Cleanup</span>
+                <span class="detail">HTML Cleanup</span>
+            </div>
+            <a href="https://github.com/NoriMyn/regex-norimyn" target="_blank" class="btn btn-small">Скачать</a>
         </div>
+    </div>
+</div>
 
         <div class="section">
             <h2>Архивные Версии</h2>
