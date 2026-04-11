@@ -530,14 +530,14 @@
                 <!-- Gemini Preset -->
                 <div class="preset-item">
                     <div class="preset-header">
-                        <h3>NoriMyn Gemini V3.9.2</h3>
+                        <h3>NoriMyn Gemini V4</h3>
                         <span class="preset-tag new">NEW</span>
                     </div>
-                    <p class="preset-text">Последняя версия, подходит и для GLM.</p>
+                    <p class="preset-text">Подходит и для GLM.</p>
                     <div class="preset-details">
                         <span class="detail">Gemini 3.0 Pro / 3.1 Pro / GLM</span>
                     </div>
-                    <a href="NoriMyn_V3.9.2_GeminiGLM.json" download class="btn btn-small">Скачать</a>
+                    <a href="NoriMyn_V4_GeminiGLM.json" download class="btn btn-small">Скачать</a>
                     <div class="info-plate">
                         <button class="guide-btn" onclick="openGuide('gemini')">📖 Гайд по модулям (Gemini)</button>
                     </div>
@@ -789,6 +789,7 @@
                         { name: "🔁 Anti-Loop System ~ Анти-луп", desc: "Запрещает повторение структуры, вводит вариативность, меняет сенсорный фокус." },
                         { name: "🌟 Sensory Enhancement System", desc: "Усиливает описания через конкретные сенсорные детали (зрение, слух, осязание)." },
                         { name: "✨ Anti-Cliché Filter", desc: "Убирает избитые фразы и клише (озон, якорь, искра и т.д.)." },
+                        { name: "🌟Main Scenario", desc: "Карточка персонажа: описание, личность, персона, сценарий." },
                         { name: "🤫 Prefill", desc: "Начальная инструкция для модели, задаёт тон и напоминает о правилах." },
                         { name: "⏩ Narrative Momentum", desc: "Заставляет сюжет развиваться, каждые 2–3 ответа обязательное изменение." },
                         { name: "🧨 Plot event", desc: "Механизм генерации событий на основе накопленного напряжения (от 0% до 22+)." },
@@ -815,11 +816,11 @@
                         { name: "✍️ Poetic & Lyrical", desc: "Поэтичный стиль: ритмичная проза, образность, метафоры." },
                         { name: "✍️ Noir & Cynical", desc: "Нуар: циничный тон, мрачный юмор, городская гниль, твёрдый язык." },
                         { name: "✍️ Fanfic & Modern", desc: "Современный фанфик: близкая третьесть, срезы жизни, реалистичные персонажи." },
-                        { name: "✍🏻 Writer style", desc: "Имитация стиля конкретного автора (нужно указать имя)." }
+                        { name: "✍🏻 Author's style", desc: "Имитация стиля конкретного автора (нужно указать имя)." }
                     ],
                     "🎯 Фокус (Focus)": [
                         { name: "🎯 Balanced", desc: "Сбалансированный: действие и диалог чередуются, сенсорные детали — акцент." },
-                        { name: "🎯 Dialogue‑Heavy", desc: "Диалоговый: сцену ведёт речь, физические реакции вторичны." },
+                        { name: "🎯 More dialogue", desc: "Диалоговый: сцену ведёт речь, физические реакции вторичны." },
                         { name: "🎯 Description‑Heavy", desc: "Описательный: акцент на окружении, телесных ощущениях, движениях." },
                         { name: "🎯 Relationships & Dynamics", desc: "Отношения: развитие связей через конкретные действия, подтекст." },
                         { name: "🎯 Worldbuilding & Immersion", desc: "Миростроение: детали среды, культуры, влияющие на сцену." },
@@ -845,7 +846,9 @@
                         { name: "🔥 21+ (Extreme)", desc: "Максимально жёсткий секс: уничижительные термины, детализация каждого действия." }
                     ],
                     "🌐 Язык": [
-                        { name: "🇷🇺 LANGUAGE: Russian", desc: "Весь текст на русском." }
+                        { name: "🇷🇺 LANGUAGE: Russian", desc: "Весь текст на русском." },
+                        { name: "🇷🇺 Русская реальность", desc: "Поменьше литературности, побольше типичного русского сленга/нецензурной лексики." },
+                        { name: "🇪🇳 LANGUAGE: English", desc: "Весь текст на английском, естественные идиомы, современная речь." }
                     ],
                     "🧠 Дополнительные модули": [
                         { name: "🧠 Think", desc: "Добавляет кастомный блок для планирования ответа." },
