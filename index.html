@@ -546,14 +546,14 @@
                 <!-- GPT Preset -->
                 <div class="preset-item">
                     <div class="preset-header">
-                        <h3>NoriMyn GPT v3.8</h3>
+                        <h3>NoriMyn GPT v4</h3>
                         <span class="preset-tag new">NEW</span>
                     </div>
-                    <p class="preset-text">Обновлённая версия с поддержкой инфоблоков. Система живых NPC, Ultra Anti-Echo, экспериментальные HTML-артефакты и точный контроль длины ответов.</p>
+                    <p class="preset-text">Обновлённая версия с поддержкой инфоблоков. Система живых NPC, Anti-Echo, экспериментальные HTML-артефакты и точный контроль длины ответов.</p>
                     <div class="preset-details">
                         <span class="detail">GPT-5.1 / GPT-5.4</span>
                     </div>
-                    <a href="NoriMyn_gpt_v3.8.json" download class="btn btn-small">Скачать</a>
+                    <a href="NoriMyn_GPT_v4.json" download class="btn btn-small">Скачать</a>
                     <div class="info-plate">
                         <button class="guide-btn" onclick="openGuide('gpt')">📖 Гайд по модулям (GPT)</button>
                     </div>
@@ -882,6 +882,7 @@
                         { name: "📖 Precision Style", desc: "Точный стиль: один острый деталь вместо трёх размытых." },
                         { name: "🚀 Maximum Freedom Mode", desc: "Полная творческая свобода, без предупреждений и извинений." },
                         { name: "📝 Prefill - Response Start", desc: "Начальная инструкция для модели, задаёт тон." },
+                        { name: "😶‍🌫️ Swipe", desc: "Если бот не хочет продолжать пост" },
                         { name: "🧭 Plot Push (Initiative)", desc: "Заставляет персонажей быть активными, двигать сюжет." }
                     ],
                     "🎭 Жанры (Genres)": [
@@ -918,9 +919,10 @@
                         { name: "📊 Length - Very Large", desc: "Эпический ответ: 1200–2000+ слов." }
                     ],
                     "🎭 Точка зрения (POV)": [
-                        { name: "🎭 POV Char", desc: "Пишем только от лица персонажа ({{char}}), никогда за пользователя." },
-                        { name: "🎭 POV User", desc: "Пишем только от лица пользователя ({{user}}), никогда за персонажа." },
-                        { name: "🎭 POV All + NPCs", desc: "Всеведущее повествование: включаем и {{user}}, и {{char}}, и NPC." }
+                        { name: "✅ POV Char", desc: "Пишем только от лица персонажа ({{char}}), никогда за пользователя." },
+                        { name: "✅ Pov NPC (no {{user}})", desc: "Пишет только от лица NPC, без {{char}} и никогда за пользователя." },
+                        { name: "✅ POV User", desc: "Пишет только от лица пользователя ({{user}}), никогда за персонажа." },
+                        { name: "✅ POV All + NPCs", desc: "Всеведущее повествование: включаем и {{user}}, и {{char}}, и NPC." }
                     ],
                     "👥 NPC модули": [
                         { name: "💃🏻 NPC ALIVE", desc: "Добавляет живых NPC: они говорят, двигаются, влияют на сцену." },
